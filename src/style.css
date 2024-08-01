@@ -1,96 +1,92 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* login */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
+/* Estilos para el contenedor del formulario */
+.form-container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la vista */
+  background-color: #0000008b; /* Color de fondo suave */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.login-form, .register-form {
+  background-color: #fff; /* Fondo blanco para el formulario */
+  padding: 20px;
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  width: 100%;
+  max-width: 400px; /* Ancho máximo del formulario */
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.form-label {
+  display: block;
+  margin-bottom: 8px; /* Espacio debajo de la etiqueta */
+  font-weight: bold; /* Negrita para las etiquetas */
+}
+
+.form-input {
+  width: 100%; /* Ancho completo del campo de entrada */
+  padding: 8px;
+  margin-bottom: 16px; /* Espacio debajo del campo de entrada */
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 4px; /* Bordes redondeados para los campos de entrada */
+  box-sizing: border-box; /* Incluye el padding y borde en el ancho total */
+}
+
+.form-input:focus {
+  border-color: #007bff; /* Color del borde al enfocar el campo */
+  outline: none; /* Quitar el contorno predeterminado del navegador */
+}
+
+.form-button {
+  width: 100%; /* Ancho completo del botón */
+  margin: 5px;
+  padding: 10px;
+  background: linear-gradient(to right, #0058b6, #00bfff); /* Color de fondo azul */
+  color: #fff; /* Color del texto blanco */
+  border: none; /* Quitar el borde predeterminado */
+  border-radius: 4px; /* Bordes redondeados para el botón */
+  font-size: 16px;
+  cursor: pointer; /* Cursor de mano al pasar sobre el botón */
+  transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+.form-button:hover {
+  background-color: #0056b3; /* Color de fondo azul oscuro al pasar el cursor */
+}
+
+.form-title {
   text-align: center;
+  margin-bottom: 20px;
+  font-size: 40px;
+  background: linear-gradient(to right, #01438a, #0070cb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
+
+/* Spinner */
+#loading-spinner{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.187);
+  border: none;
 }
 
-.card {
-  padding: 2em;
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #003cff;
+  width: 50px; height: 50px;
+  animation: spin 1s linear infinite;
 }
 
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
