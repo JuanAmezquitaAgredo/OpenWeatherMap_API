@@ -1,21 +1,29 @@
-import { navigateTo } from "../../router";
+import { HeaderHome } from "../../components/header_home";
+import { CitiesHome} from "../../components/cities_home";
 
 export function HomeView() {
     const $root = document.getElementById('root') as HTMLElement;
+    const headerHtml: string = HeaderHome().html;
+    const headerLogic = HeaderHome().logic;
 
+    const citiesHtml: string = CitiesHome().html;
+    const citiesLogic = CitiesHome().logic;
+
+    //*RENDERIZADO*/
     $root.innerHTML = ``;
-    const h1 = document.createElement('h1');
-    h1.textContent = 'Home';
-    $root.appendChild(h1);
-    const button_logout = document.createElement('button');
-    button_logout.textContent = 'Logout';
-    $root.appendChild(button_logout);
+    $root.innerHTML = headerHtml;
+    $root.innerHTML += citiesHtml;
 
-    //Logica Home
 
-    //Logica Logout
-    button_logout.addEventListener('click', () => {
-        sessionStorage.removeItem('token');
-        navigateTo('/Login');
-    })
-}
+
+    //*LOGICA */
+    //*HEADER */
+    headerLogic();
+
+    //*CITIES */
+    const create_button = document.getElementById('create-city') as HTMLButtonElement;
+    create_button.addEventListener('click', () => {
+        citiesLogic();
+    });
+
+};
