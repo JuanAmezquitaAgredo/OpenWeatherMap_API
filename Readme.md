@@ -1,5 +1,10 @@
 Instalations:
 
+- Create Poryect With Vite:
+        1. npm create vite@latest
+        2. npm i (In proyect)
+        3. Active localhost
+
 - JSON SERVER: 
         1. npm install json-server
         2. Create db.json 
