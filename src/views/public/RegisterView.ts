@@ -1,3 +1,5 @@
+import { RegisterController } from "../../controllers/Register-controller";
+import { SpinnerController } from "../../controllers/spinner-load-controller";
 import { navigateTo } from "../../router";
 
 
@@ -37,6 +39,21 @@ export function RegisterView() {
     nameInput.className = 'form-input';
     nameInput.required = true;
     form.appendChild(nameInput);
+
+    //crear el campo de apellido
+    const lastNameLabel = document.createElement('label');
+    lastNameLabel.htmlFor = 'lastName';
+    lastNameLabel.className = 'form-label';
+    lastNameLabel.textContent = 'Apellido:';
+    form.appendChild(lastNameLabel);
+    
+    const lastNameInput = document.createElement('input');
+    lastNameInput.type = 'text';
+    lastNameInput.id = 'lastName';
+    lastNameInput.name = 'lastName';
+    lastNameInput.className = 'form-input';
+    lastNameInput.required = true;
+    form.appendChild(lastNameInput);
 
     // Crear el campo del email
     const emailLabel = document.createElement('label');
@@ -87,11 +104,32 @@ export function RegisterView() {
         navigateTo('/Login');
     });
 
-    submitButton.addEventListener('click', (event) => {
+    submitButton.addEventListener('click',async (event) => {
         event.preventDefault();
         const name = nameInput.value;
+        const lastName = lastNameInput.value;
         const email = emailInput.value;
         const password = passwordInput.value;
-        console.log(name, email, password);
+        const data = {
+            name,
+            lastName,
+            email,
+            password
+        };
+        const registerController = new RegisterController();
+        const spinnercontroller = new SpinnerController();
+        spinnercontroller.createSpinner();
+        spinnercontroller.startSpinner();
+
+        try{
+            await registerController.postRegister(data);
+            navigateTo('/Login');
+        }catch(error){
+            console.log(error);
+            alert('Error al registrar usuario');
+        }finally{
+            spinnercontroller.stopSpinner();
+        }
+        
     });
 }

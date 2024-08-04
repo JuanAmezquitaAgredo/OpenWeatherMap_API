@@ -1,5 +1,6 @@
 import { HeaderHome } from "../../components/header_home";
 import { CitiesHome} from "../../components/cities_home";
+import { printCities } from "../../components/print_cities";
 
 export function HomeView() {
     const $root = document.getElementById('root') as HTMLElement;
@@ -21,6 +22,12 @@ export function HomeView() {
     headerLogic();
 
     //*CITIES */
+
+    //*Print cities */
+
+    printCities();
+
+    //*Create */
     const create_button = document.getElementById('create-city') as HTMLButtonElement;
     create_button.addEventListener('click', () => {
         citiesLogic();

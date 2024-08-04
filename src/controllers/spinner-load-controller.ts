@@ -19,7 +19,8 @@ export class SpinnerController{
     }
 
     public stopSpinner() {
-        const spinner = document.getElementById('loading-spinner') as HTMLDialogElement;
+        const spinner = document.getElementById('loading-spinner') as HTMLDialogElement;   
         spinner.close();
+        spinner.style.display = 'none';
     }
 }

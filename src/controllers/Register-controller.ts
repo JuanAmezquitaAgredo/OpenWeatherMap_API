@@ -1,8 +1,7 @@
-import { BodyRequestLogin } from "../models/BodyRequestLogin";
+import { BodyRequestRegister } from "../models/BodyRequestRegister";
+export class RegisterController {
 
-export class LoginController {
-
-    async postLogin(data:BodyRequestLogin):Promise<void> {
+    async postRegister(data:BodyRequestRegister):Promise<void> {
         const headers: Record<string, string>={
             'Content-Type':'application/json'
         }
@@ -14,26 +13,19 @@ export class LoginController {
         }
     
     
-        const url = 'http://190.147.64.47:5155/api/v1/auth/login';
+        const url = 'http://190.147.64.47:5155/api/v1/users';
         const result = await fetch(url,reqOptions);
     
         console.log(result.status);
     
         if(result.status === 201){
-            alert('Login exitoso');
+            alert('Registro exitoso');
         }else if(result.status === 401){
-            alert('Usuario o contraseña incorrecto');
+            alert('No autorizado');
             throw new Error("Conexion fallida");
         }else{
             alert('Usuario o contraseña incorrecto');
             throw new Error("Conexion fallida");
         }
-    
-        const userData = (await result.json()).data;
-        const token = userData.token;
-        const id = userData.id;
-        sessionStorage.setItem('id',id);
-        sessionStorage.setItem('token',token);
-        
     }
 }
